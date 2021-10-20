@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Personas</h2>
+
+    <div class="responsive-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Sexo</th>
+                    <th>Documento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of personas">
+                    <td><b>{{ item.name }}</b></td>
+                    <td>{{ item.age }}</td>
+                    <td>{{ item.gender }}</td>
+                    <td>{{ item.document }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="formulario">
+        <form>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" [(ngModel)]="name" name="name"/>
+            <input #fileBtn type="file" id="file" (change)="handle($event)" style="display: none">
+            <button (click)="triggerClick($event)"><span class="paper-clip"></span> <span class="btn-text">Subir Documento</span></button>
+            <button class="save" (click)="save($event)">Guardar</button>
+            <div *ngIf="saved" class="saveText">Guardado!</div>
+        </form>
+    </div>
+</div>
